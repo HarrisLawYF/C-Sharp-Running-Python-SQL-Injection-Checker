@@ -1,0 +1,16 @@
+D:\Users\Harris\Desktop\Projects\augmented-reality-c-sharp\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csprojAssemblyReference.cache
+D:\Users\Harris\Desktop\Projects\augmented-reality-c-sharp\SQLInjection\SQLInjection\obj\Debug\SQLInjection.Properties.Resources.resources
+D:\Users\Harris\Desktop\Projects\augmented-reality-c-sharp\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csproj.GenerateResource.cache
+D:\Users\Harris\Desktop\Projects\augmented-reality-c-sharp\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csproj.CoreCompileInputs.cache
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\bin\Debug\SQLInjection.exe.config
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\bin\Debug\SQLInjection.exe
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\bin\Debug\SQLInjection.pdb
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csprojAssemblyReference.cache
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.Properties.Resources.resources
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csproj.GenerateResource.cache
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csproj.CoreCompileInputs.cache
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.csproj.CopyComplete
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.exe
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.pdb
+D:\Users\Harris\Desktop\Projects\SQLInjection\SQLInjection\obj\Debug\SQLInjection.Form1.resources

